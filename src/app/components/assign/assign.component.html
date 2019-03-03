@@ -1,0 +1,38 @@
+<div fxLayout="column">
+    <mat-toolbar>Assign Ticket</mat-toolbar>
+    <div class="form" fxLayout="column">
+        <mat-form-field>
+            <input matInput placeholder="Passenger Name" [formControl]="assignedto" [(ngModel)]="data.assignedTo" />
+            <mat-error *ngIf="assignedto.invalid && (assignedto.dirty || assignedto.touched)">{{getErrorForAssignedTo()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Age" [formControl]="age" [(ngModel)]="data.age" />
+            <mat-error *ngIf="age.invalid && (age.dirty || age.touched)">{{getErrorForAge()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" [formControl]="email" [(ngModel)]="data.email" />
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">{{getErrorForEmail()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Contact Number" [formControl]="contact" [(ngModel)]="data.contact" />
+            <mat-error *ngIf="contact.invalid && (contact.dirty || contact.touched)">{{getErrorForContact()}}</mat-error>
+        </mat-form-field>
+
+        <div fxLayoutGap="60px" fxLayout="row">
+            <div>
+                Gender
+            </div>
+            <mat-radio-group [(ngModel)]="data.gender" fxLayoutGap="60px" aria-required="true">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div fxLayoutAlign="center center">
+            <button mat-button class="assign" [disabled]="getErrorForAssignedTo() != '' || getErrorForContact() != '' || getErrorForAge() != '' || getErrorForEmail() != ''" [mat-dialog-close]="data">Assign Ticket</button>
+        </div>
+    </div>
+</div>

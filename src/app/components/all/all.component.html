@@ -1,0 +1,45 @@
+<div class="main">
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="adminName">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Admin Name </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Status </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="source">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Source </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Source}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Destination </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Destination}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="assignedTo">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Assigned To </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.AssignedTo ? element.AssignedTo.assignedTo : null}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="assign">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%;text-align: center"> Assign </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element">
+                <button mat-button class="assign" (click)="openAssignDialog(element.key)">Assign</button> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef style="width: 5%;text-align: center"> Delete </th>
+            <td mat-cell style="width: 5%;text-align: center" *matCellDef="let element">
+                <button mat-button (click)="deleteTicket(element.key)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

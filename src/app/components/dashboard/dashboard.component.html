@@ -1,0 +1,30 @@
+<mat-toolbar class="toolbar">
+    <div fxLayout="row" fxFlex="100">
+        <div fxFlex="15%" fxLayout="row" fxLayoutGap="10px">
+            <button mat-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <h3>Ticket System</h3>
+        </div>
+        <div fxFlex="80"></div>
+        <div fxFlex="5" fxLayoutAlign="end">
+            <mat-icon>power_settings_new</mat-icon>
+        </div>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav opened #drawer class="sidenav" [mode]="screenWidth > 840 ? 'side' : 'over'" style="width:200px;">
+        <div fxLayout="column">
+            <button mat-list-item mat-button fxFlex="100" (click)="selectedButton('add')" [ngClass]="{'selectedClass': selectedBtn == 'add' }">Add New Ticket</button>
+            <button mat-list-item mat-button fxFlex="100" (click)="selectedButton('all')" [ngClass]="{'selectedClass': selectedBtn == 'all' }">All Ticket</button>
+
+            <button mat-list-item mat-button fxFlex="100" (click)="selectedButton('pending')" [ngClass]="{'selectedClass': selectedBtn == 'pending'}">Pending Ticket</button>
+            <button mat-list-item mat-button fxFlex="100" (click)="selectedButton('closed')" [ngClass]="{'selectedClass': selectedBtn == 'closed'}">Closed Ticket</button>
+            <button mat-list-item mat-button fxFlex="100" (click)="selectedButton('resolved')" [ngClass]="{'selectedClass': selectedBtn == 'resolved'}">Resolved Ticket</button>
+        </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content style="height:100vh;">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

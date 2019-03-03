@@ -1,0 +1,33 @@
+<div class="main">
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="source">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Source </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Source}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Destination </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.Destination}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="assignedTo">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Assigned To </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.AssignedTo ? element.AssignedTo.assignedTo : null}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Email </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element"> {{element.AssignedTo ? element.AssignedTo.email : null}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="contact">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Contact </th>
+            <td mat-cell style="width: 15%" *matCellDef="let element">{{element.AssignedTo ? element.AssignedTo.contact : null}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

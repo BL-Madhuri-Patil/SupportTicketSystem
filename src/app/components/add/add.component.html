@@ -1,0 +1,30 @@
+<div class="main" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex="60" class="card">
+        <mat-toolbar>New Ticket</mat-toolbar>
+        <div fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Admin Name" [formControl]="name" />
+                <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">{{getErrorForName()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Status" [formControl]="status" />
+                <mat-error *ngIf="status.invalid && (status.dirty || status.touched)">{{getErrorForStatus()}}</mat-error>
+
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <input matInput placeholder="Source" [formControl]="source" />
+                <mat-error *ngIf="source.invalid && (source.dirty || source.touched)">{{getErrorForSource()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Destination" [formControl]="destination" />
+                <mat-error *ngIf="destination.invalid && (destination.dirty || destination.touched)">{{getErrorForDestination()}}</mat-error>
+            </mat-form-field>
+
+            <div fxLayoutAlign="center center">
+                <button mat-raised-button color="primary" [disabled]="getErrorForName() != '' || getErrorForStatus() != '' || getErrorForSource() != '' || getErrorForDestination() != '' " (click)="addTicket()">Add Ticket</button>
+            </div>
+        </div>
+    </mat-card>
+</div>

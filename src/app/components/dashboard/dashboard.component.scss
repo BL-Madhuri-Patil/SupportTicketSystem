@@ -1,0 +1,26 @@
+// .toolbar {
+// background-color: #dadce0;
+// }
+mat-icon {
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+button {
+    font-size: 15px;
+    font-weight: bolder;
+    height: 50px;
+    text-align: left;
+}
+
+.selectedClass {
+    background-color: #feefc3;
+}
+
+:host /deep/ .mat-drawer-backdrop.mat-drawer-shown {
+    visibility: hidden;
+}
+
+h3 {
+    margin-top: 10px;
+}
